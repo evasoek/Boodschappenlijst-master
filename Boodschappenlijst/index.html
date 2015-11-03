@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html ng-app="application">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My AngularJS Application</title>
+    <link href="./Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="./Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="Content/ngDialog.css" rel="stylesheet" />
+    <link href="Content/ngDialog-theme-default.css" rel="stylesheet" />
+    <script src="./Scripts/angular.js"></script>
+    <script src="./Scripts/angular-cookies.js"></script>
+    <script src="./Scripts/angular-resource.js"></script>
+    <script src="./Scripts/angular-route.js"></script>
+    <script src="Scripts/ngDialog.js"></script>
+    
+    <script src="./Scripts/app.js"></script>
+    <script src="./Scripts/sha256.js"></script>
+    <script src="./Scripts/Controllers/LoginController.js"></script>
+    <script src="./Scripts/Controllers/HomeController.js"></script>
+    <script src="./Scripts/Controllers/GroupInfoController.js"></script>
+    <script src="./Scripts/Controllers/PurchaseListController.js"></script>
+    <script src="./Scripts/Controllers/AccountController.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/#/home" class="navbar-brand"><span class="glyphicon glyphicon-list"></span></a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/#/home"><span class="glyphicon glyphicon-home"></span></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/#/login" ng-hide="loggedIn">Login</a></li>
+                    <li><a href="/#/account" ng-show="loggedIn">My Account</a></li>
+                    <li><a href="" ng-click="Logout()" ng-show="loggedIn">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <ng-view></ng-view>
+
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">&copy; Groep 5</p>
+            </div>
+        </footer>
+    </div>
+
+    
+
+    <script src="./Scripts/jquery-1.9.1.min.js"></script>
+    <script src="./Scripts/bootstrap.min.js"></script>
+</body>
+</html>

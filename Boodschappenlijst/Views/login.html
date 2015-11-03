@@ -1,0 +1,39 @@
+﻿<!-- Login and register form -->
+<div class="page-header">
+    <h2>Login</h2>
+</div>
+<div class="row">
+    <div class="col-sm-4 col-sm-offset-4 login">
+        <form name="sign_form" novalidate>
+            <div class="form-group">
+                <label for="user_name">Username</label>
+                <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Enter username" ng-model="user_name" required>
+            </div>
+            <div class="form-group">
+                <label for="user_password">Password</label>
+                <input type="password" class="form-control" id="user_password" name="user_password" placeholder="Password" ng-model="user_password" ng-minlength="6" required>
+            </div>
+
+            <button type="submit" class="btn btn-success" ng-click="Login(user_name, user_password)" ng-disabled="{{sign_form_validation}}">
+                Sign in!
+            </button>
+            <button type="submit" class="btn btn-primary" ng-click="Register(user_name, user_password)" ng-disabled="{{sign_form_validation}}">
+                Register
+            </button>
+        </form>
+
+        <!-- Form validation-->
+        <div class="col-sm-12 alert alert-info" role="alert" ng-show="{{sign_form_validation}}">
+            <span ng-show="sign_form.user_name.$error.required">Username is required.<br /></span>
+            <span ng-show="sign_form.user_password.$error.required">Password is required.<br /></span>
+            <span ng-show="sign_form.user_password.$error.minlength">Password must be longer.<br /></span>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Returned server response -->
+    <div class="responseMsg col-sm-12 alert alert-{{message_type}}" role="alert">
+        {{return_message}}
+    </div>
+</div>

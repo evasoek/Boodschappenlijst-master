@@ -1,0 +1,22 @@
+﻿<div class="form-group">
+    
+    <label for="exampleInputEmail1">voer prijs in</label>
+    <input type="number" class="form-control" id="exampleInputEmail1" ng-model="currentPurchase.price" ng-keyup="calculateBalances()"> price: {{currentPurchase.price | customCurrency}}
+    <br />
+    betaald door: {{username}}
+    <br />
+    verschil in balans: 
+</div>
+omschrijving:
+<p>
+    {{currentPurchase.description}}
+</p>
+betaald door:   
+<ul class="list-group">
+    <li class="list-group-item">{{currentPurchase.currentGroupMember.username}}, balance:  {{currentPurchase.currentGroupMember.futureBalance | customCurrency}} (+{{currentPurchase.currentGroupMember.priceUp | customCurrency}})</li>
+</ul>
+<ul class="list-group">
+    
+    <li ng-repeat ="participant in currentPurchase.participants" ng-if="!participant.ignore"class="list-group-item">{{participant.username}}, balance:  {{participant.balance | customCurrency}} (-{{currentPurchase.priceUp | customCurrency}})</li>  
+</ul>
+<button class="btn btn-primary" ng-click="bevestig() && closeThisDialog('Some value')">bevestig</button>

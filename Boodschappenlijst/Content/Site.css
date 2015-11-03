@@ -1,0 +1,117 @@
+﻿/* general */
+@font-face {
+  font-family: 'Glyphicons Halflings';
+
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), 
+       url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), 
+       url('../fonts/glyphicons-halflings-regular.woff') format('woff'), 
+       url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), 
+       url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    padding-top: 50px;
+    background: -webkit-linear-gradient(#f4f4f4 0%, #ededed 100%) !important;
+}
+
+body > .container {
+    position: relative;
+    min-height: 1000px;
+    background-color: #fff;
+}
+
+h1, h2, h3, h4, h5 {
+    margin-top: 0 !important;
+}
+
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar {
+    background: -webkit-linear-gradient(#e67000 0%, #c86200 100%); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#e67000 0%, #c86200 100%); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#e67000 0%, #c86200 100%); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#e67000 0%, #c86200 100%); /* Standard syntax */
+}
+
+    .navbar .navbar-brand {
+        position: relative;
+        background-color: #5bc0de;
+    }
+    .navbar .navbar-brand::before {
+        position: absolute;
+        bottom: -19px;
+        left: -9px;
+        font-family: 'Glyphicons Halflings';
+        content: '\e044';
+        font-size: 62px;
+        color: #5bc0de;
+    }
+
+    .navbar .navbar-brand,
+    .navbar li a {
+        color: rgba(255,255,255,1);
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    }
+
+    .navbar li a:hover,
+    .navbar li a:active,
+    .navbar li a:focus {
+        background: none !important;
+        color: rgba(255,255,255,0.7);
+    }
+
+/* layout */
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 30px;
+}
+
+/* pages */
+
+/* login */
+.login {
+    padding: 25px 0;
+    background-color: #f4f4f4;
+}
+
+.login .alert {
+    margin-top: 25px;
+    margin-bottom: 0;
+}
+
+/* home */
+.sidebar .widget {
+    margin-bottom: 15px;
+}
+
+/* groupinfo */
+.nav-tabs li a:hover {
+    cursor: pointer;
+}
+
+/* purchaselist */
+.btn-member {
+    margin: 5px;
+}
+
+/* my account */
+.account .alert {
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+/* pop-up windown */
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+    width: 900px !important;
+}

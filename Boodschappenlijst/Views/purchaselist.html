@@ -1,0 +1,33 @@
+﻿    <div class="page-header">
+        <h2>Een boodschappenlijst {{purchaselist.status}}</h2>
+    </div>
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="col-sm-4">
+                <h3>Beschrijving</h3>
+                <textarea class="form-control" style="resize:none;" rows="8" title="Vul een beschrijving in" placeholder="Vul een beschrijving in..." ng-model="purchaselist.description" ng-change="checkDescription()">{{purchaselist.description}}</textarea>
+                <button class="btn btn-success" style="margin-top:20px;" ng-click="insertPurchase()"><span class="glyphicon glyphicon-plus"></span> Invoeren </button>
+            </div> <!-- end col -->
+            <div class="col-sm-8">
+                <h3>Deelnemers</h3>
+                    <div class="well" >
+                        <button class="btn btn-primary btn-member" ng-repeat="participant in participants" ng-click="removeParticipant(participant)"> {{participant.username}} <span class="glyphicon glyphicon-remove"></span></button>
+                    </div>
+            </div> <!-- end col -->
+            <span class="col-sm-8 alert alert-danger alerttext" style="margin-top:105px" ng-hide="alerthide" ng-model="alertmessage">{{alertmessage}}</span>
+        </div> <!-- end col -->
+        <div class="col-sm-3 sidebar">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Selecteer deelnemers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickablerow" ng-repeat="member in membersNotInParticipants" ng-click="addParticipant(member)">
+                        <td>{{member.username}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> <!-- end col -->
+    </div> <!-- end row -->

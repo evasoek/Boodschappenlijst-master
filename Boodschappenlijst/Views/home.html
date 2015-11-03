@@ -1,0 +1,57 @@
+﻿<div class="page-header">
+    <h2>Home</h2>
+</div>
+<div class="row">
+    <div class="col-sm-9">
+        <div class="{{message_show}} delete-alert alert alert-{{message_type}}" role="alert">
+            {{return_message}}
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th ng-repeat="tableheader in tableheaders">
+                        <span class="{{tableheader.icon}}"></span>
+                        {{tableheader.title}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="group in groups">
+                    <td>{{group.name}}</td>
+                    <td ng-repeat="member in group.group_members" ng-if="member.username == username">{{member.balance | customCurrency}}</td>
+                    <td ng-repeat="member in group.group_members | orderBy:'balance':true | limitTo:1">{{member.balance | customCurrency}}</td>
+                    <td ng-repeat="member in group.group_members | orderBy:'balance' | limitTo:1">{{member.balance | customCurrency}}</td>
+                    <td>
+                        <a class="btn btn-primary view-btn" href="#/groupinfo/{{group.id}}" ng-click="viewGroup(group)"><span class="glyphicon glyphicon-info-sign"></span></a>
+                        <a class="btn btn-primary delete-btn" ng-click="deleteGroup(group)"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-3 sidebar">
+        <div class="widget well">
+            <p>Maak een nieuwe groep aan</p>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" id="group_name" name="group_name" ng-model="group_name" placeholder="Naam">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <textarea class="form-control" id="group_desc" name="group_desc" ng-model="group_desc" placeholder="Beschrijving"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button ng-click="createGroup(group_name, group_desc, username)" class="group-submit btn btn-info"><span class="glyphicon glyphicon-plus"></span> groep aanmaken</button>
+                    </div>
+                </div>
+            </form>
+            <div class="{{create_message_show}} alert create-alert alert-{{create_message_type}}" role="alert">
+                {{create_return_message}}
+            </div>
+        </div>
+    </div>
+</div>

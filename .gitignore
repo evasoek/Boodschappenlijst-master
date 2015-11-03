@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Boodschappenlijst/obj/Debug
+/Boodschappenlijst/bin/Boodschappenlijst.dll
+/Boodschappenlijst/bin/Boodschappenlijst.dll.config
+/Boodschappenlijst/bin/Boodschappenlijst.pdb
+/Boodschappenlijst.v12.suo

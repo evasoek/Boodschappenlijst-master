@@ -1,0 +1,129 @@
+﻿<div class="page-header">
+    <h2>{{group.name}}</h2>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <ul class="nav nav-tabs">
+            <li ng-click="showList()" id="purchasebutton"role="presentation" class="{{listPanel.extraClass}}"><a>Boodschappenlijst</a></li>
+            <li ng-click="showUsers()" id="userbutton" class="{{userPanel.extraClass}}" role="presentation"><a>Gebruikers</a></li>
+        </ul>
+    </div><!-- end col -->
+    <!--- boodschappen lijst-->
+    <div ng-show="listPanel.active" class="boodschappenlijst">
+        <div class="col-sm-9">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="glyphicon glyphicon-align-left"></span> omschrijving
+                        </th>
+                        
+                        <th>
+                            <span class="glyphicon glyphicon-user"></span> doen mee
+                        </th>
+                        <th>
+                            <span class="glyphicon glyphicon-pencil"></span> acties
+                        </th>
+                        <th>
+                            <span class="glyphicon glyphicon-piggy-bank"></span> betaald door
+                        </th>
+                        <th>
+                            <span class="glyphicon glyphicon-euro"></span> prijs
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="purchaseList in purchaseLists" class="{{purchaseList.extraClass}}">
+                        <td>
+                            {{purchaseList.description}}
+                        </td>
+                       
+                        <td>
+                            <mijndiv ng-repeat="participant in purchaseList.participants">{{participant.username}},</mijndiv>
+                        </td>
+                        
+                        <td>
+                            <a class="btn btn-primary" ng-hide="purchaseList.hideButtons" ng-click="edit(purchaseList)"><span class="glyphicon glyphicon-edit"></span></a>
+                            <a ng-click="delete(purchaseList)" id="deletepurchase"class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span></a>
+                            <a ng-click="bill(purchaseList)" ng-hide="purchaseList.hideButtons"class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                        </td>
+                        <td>
+                            {{purchaseList.purchaser}}
+                        </td>
+                        <td>
+                            {{purchaseList.price | currency}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <span ng-hide="return_message == ''" class="col-sm-12 alert alert-{{message_type}}" role="alert">
+                {{return_message}}
+            </span>
+        </div><!-- end col -->
+        <div class="col-sm-3 sidebar">
+            <div class="widget well">
+                <p>Voeg een nieuwe boodschap toe</p>
+                <form class="form-horizontal">
+                    
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button ng-click="addItem()" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Voeg toe</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><!-- end col -->
+    </div><!-- end boodschappenlijst -->
+    <!--- EOF boodschappenlijst-->
+    <div ng-controller="UserController">
+        <div ng-show="userPanel.active" class="users col-sm-9">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="glyphicon glyphicon-user"></span> naam
+                        </th>
+                        <th>
+                            <span class="glyphicon glyphicon-piggy-bank"></span> balans
+                        </th>
+                        <th>
+                            <span class="glyphicon glyphicon-pencil"></span> acties
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in group.group_members">
+                        <td>
+                            {{user.username}}
+                        </td>
+                        <td>
+                            {{user.balance | customCurrency}}
+                        </td>
+                        <td>                          
+                            <a ng-click="delete(user)" id="delete" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <span ng-hide="return_message == ''" class="col-sm-12 alert alert-{{message_type}}" role="alert">
+                {{return_message}}
+            </span>
+        </div> <!-- end col-->
+        <div ng-show="userPanel.active" class="col-sm-3 sidebar">
+            <div class="widget well">
+                
+                <div class="form-group">
+                    <label for="exampleInputEmail1">zoek gebruiker</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" ng-model="search.username" placeholder="zoekterm">
+                </div>
+                
+                <select multiple style="min-height:50px; width:100%" class="form-group ">
+                    <option id="selectuser" ng-repeat="user in selectList | filter:search:strict" ng-click="select(user)">{{user.username}}</option>
+                </select>
+                <button type="submit" id="adduser" ng-click="addUsers() " class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Voeg toe</button>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end usercontroller-->
+</div><!-- end row -->

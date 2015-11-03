@@ -1,0 +1,43 @@
+﻿<div class="page-header">
+    <h2>Mijn account: {{user_name}}</h2>
+</div>
+
+<div class="row account">
+    <div class="col-sm-12">
+        <form name="account_form" novalidate>
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <label for="user_password">Oud Wachtwoord</label>
+                    <input type="password" class="form-control" id="user_password" name="user_password" placeholder="Oud Wachtwoord" ng-minlength="6" ng-model="user_password" required>
+                </div>
+
+                <div class="col-sm-3">
+                    <label for="new_password">Nieuw Wachtwoord</label>
+                    <input type="password" class="form-control" id="new_password" name="new_password" placeholder="Nieuw Wachtwoord" ng-minlength="6" ng-model="new_password" required>
+                </div>
+
+                <div class="col-sm-5">
+                    <label>Actie</label><br/>
+                    <button type="button" class="btn btn-danger" ng-disabled="{{delete_account_validation}}" ng-click="DeleteAccount(user_password)">Verwijder Account</button>
+                    <button type="button" class="btn btn-warning" ng-disabled="{{change_account_validation}}" ng-click="ChangePassword(user_password, new_password)">Wijzig Wachtwoord</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Form validation-->
+        <div class="col-sm-6 alert alert-info" role="alert" ng-show="{{delete_account_validation}}">
+            <span ng-show="account_form.user_password.$error.required">Password is required.</span>
+            <span ng-show="account_form.user_password.$error.minlength">Password must be longer.<br /></span>
+        </div>
+
+        <div class="col-sm-6 alert alert-info" role="alert" ng-show="{{change_validation}}">
+            <span ng-show="account_form.new_password.$error.required">In order to change password, type the new one.</span>
+            <span ng-show="account_form.new_password.$error.minlength">New password must be longer.</span>
+        </div>
+
+        <!-- Returned server response -->
+        <div class="responseMsg col-sm-6 alert alert-{{message_type}}" role="alert">
+            {{return_message}}
+        </div>
+    </div>
+</div>
